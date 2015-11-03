@@ -1,5 +1,8 @@
-require "bibliografia/version"
+#require "bibliografia/version"
 
-module Bibliografia
-  # Your code goes here...
+module Libro
+ 	class Bibliografia
+
+	end
+
 end
