@@ -108,6 +108,13 @@ describe Libro do
 	        expect(@b1.fecha).to eq('July 7, 2013')
 
 	       end
+	       
+	       it ' Expectativa Existe un método para obtener el listado de ISBN ' do
+
+		expect(@b1).to respond_to(:isbn)
+	        expect(@b1.isbn).to contain_exactly('ISBN-13: 978-1937785499','ISBN-10: 1937785491')
+
+	       end
 
 
 	  end 
