@@ -29,6 +29,11 @@ module Libro
 			raise ArgumentError,'Argumento "fecha" no debe ser nula' unless  texto[:fecha] != nil
 			raise ArgumentError,'Argumento "fecha" debe ser String' unless texto[:fecha].is_a? String
 			@fecha = texto[:fecha]
+
+			raise ArgumentError,'Argumento "isbn" no debe ser nulo' unless texto[:isbn] != nil
+		  	raise ArgumentError,'Argumento "isbn" debe ser un Array' unless texto[:isbn].is_a? Array
+		  	texto[:isbn].each {|x| raise ArgumentError,'El valor del array debe ser String' unless x.is_a? String}
+			@isbn = texto[:isbn]
 		end
 	end
 
