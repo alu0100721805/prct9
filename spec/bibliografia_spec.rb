@@ -73,6 +73,13 @@ describe Libro do
 	        expect(@b1.autor).to contain_exactly('Dave Thomas', 'Andy Hunt', 'Chad Fowler')
 
 	       end
+	       
+	       it ' Expectativa Existe un método para obtener el título' do
+
+		expect(@b1).to respond_to(:titulo)
+	        expect(@b1.titulo).to eq('Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide')
+
+	       end
 		  
 
 
