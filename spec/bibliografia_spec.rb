@@ -66,6 +66,13 @@ describe Libro do
 
 		
 	       end
+	       
+	       it ' Expectativa Existe un método para obtener el listado de autores' do
+
+		expect(@b1).to respond_to(:autor)
+	        expect(@b1.autor).to contain_exactly('Dave Thomas', 'Andy Hunt', 'Chad Fowler')
+
+	       end
 		  
 
 
