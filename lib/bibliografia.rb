@@ -25,6 +25,10 @@ module Libro
 			raise ArgumentError,'Argumento "edicion" no debe ser nulo' unless  texto[:edicion] != nil
 			raise ArgumentError,'Argumento "edicion" debe ser String' unless texto[:edicion].is_a? String
 		 	@edicion = texto[:edicion]
+
+			raise ArgumentError,'Argumento "fecha" no debe ser nula' unless  texto[:fecha] != nil
+			raise ArgumentError,'Argumento "fecha" debe ser String' unless texto[:fecha].is_a? String
+			@fecha = texto[:fecha]
 		end
 	end
 
