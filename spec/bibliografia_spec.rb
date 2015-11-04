@@ -80,6 +80,15 @@ describe Libro do
 	        expect(@b1.titulo).to eq('Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide')
 
 	       end
+	       
+	       it ' Expectativa Existe un método para obtener la serie' do
+
+		expect(@b1).to respond_to(:serie)
+	        expect(@b1.serie).to eq('The Facets of Ruby')
+
+	       end
+	       
+	       
 		  
 
 
