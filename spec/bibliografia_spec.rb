@@ -88,7 +88,12 @@ describe Libro do
 
 	       end
 	       
-	       
+	       it ' Expectativa Existe un método para obtener la editorial' do
+
+		expect(@b1).to respond_to(:editorial)
+	        expect(@b1.editorial).to eq('Pragmatic Bookshelf')
+
+	       end
 		  
 
 
