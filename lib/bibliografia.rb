@@ -17,6 +17,10 @@ module Libro
 		
 			raise ArgumentError,'Argumento "serie" debe ser String o nil' unless ((texto[:serie].is_a? String) || (texto[:serie] == nil))
 			@serie = texto[:serie]
+
+			raise ArgumentError,'Argumento "editorial" no debe ser nulo' unless  texto[:editorial] != nil
+		        raise ArgumentError,'Argumento "editorial" debe ser String' unless texto[:editorial].is_a? String
+		        @editorial = texto[:editorial]
 		end
 	end
 
