@@ -115,6 +115,12 @@ describe Libro do
 	        expect(@b1.isbn).to contain_exactly('ISBN-13: 978-1937785499','ISBN-10: 1937785491')
 
 	       end
+	       
+	       it ' Expectativa Existe un método para obtener la referencia formateada ' do
+
+                expect(@b1).to respond_to(:to_s)
+
+               end
 
 
 	  end 
