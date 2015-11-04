@@ -94,6 +94,13 @@ describe Libro do
 	        expect(@b1.editorial).to eq('Pragmatic Bookshelf')
 
 	       end
+	       
+	       it ' Expectativa Existe un método para obtener el número de edición' do
+
+		expect(@b1).to respond_to(:edicion)
+	        expect(@b1.edicion).to eq('4 edition')
+
+	       end
 		  
 
 
