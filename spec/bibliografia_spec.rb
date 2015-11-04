@@ -59,6 +59,13 @@ describe Libro do
 	      expect{ b7 = Libro::Bibliografia.new({:autor => ['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => ['FECHA1','FECHA2'],:isbn => ['ISBN-13: 978-1937785499','ISBN-10: 1937785491']})}.to raise_error(ArgumentError)
 
 	       end
+	       
+	       it ' Expectativa Debe existir uno o más números ISBN ' do
+
+		expect{b8 = Libro::Bibliografia.new({:autor => ['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => 'July 7, 2013',:isbn => nil})}.to raise_error(ArgumentError)
+
+		
+	       end
 		  
 
 
