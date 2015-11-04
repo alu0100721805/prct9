@@ -102,6 +102,12 @@ describe Libro do
 
 	       end
 		  
+	       it ' Expectativa Existe un método para obtener la fecha de publicación ' do
+
+		expect(@b1).to respond_to(:fecha)
+	        expect(@b1.fecha).to eq('July 7, 2013')
+
+	       end
 
 
 	  end 
