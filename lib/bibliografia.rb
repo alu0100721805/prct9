@@ -35,6 +35,7 @@ module Libro
 		  	texto[:isbn].each {|x| raise ArgumentError,'El valor del array debe ser String' unless x.is_a? String}
 			@isbn = texto[:isbn]
 		end
+		attr_reader :autor
 	end
 
 end
