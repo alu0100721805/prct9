@@ -10,6 +10,10 @@ module Libro
 		  	 raise ArgumentError,'Argumento "autor" debe ser un Array' unless texto[:autor].is_a? Array
 		  	 texto[:autor].each {|x| raise ArgumentError,'El valor del array debe ser String' unless x.is_a? String}
 		  	 @autor = texto[:autor]
+
+			raise ArgumentError,'Argumento "titulo" no debe ser nulo' unless  texto[:titulo] != nil
+		 	raise ArgumentError,'Argumento "titulo" debe ser String' unless texto[:titulo].is_a? String
+		 	@titulo = texto[:titulo]
 		end
 	end
 
