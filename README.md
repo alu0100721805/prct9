@@ -1,15 +1,16 @@
-# Bibliografia
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bibliografia`. To experiment with that code, run `bin/console` for an interactive prompt.
+# Práctica de Laboratorio #6. Desarrollo Dirigido por Pruebas (TDD)  GRUPO LPP-43 CURSO 2015-2016
 
-TODO: Delete this and the text above, and describe your gem
+# Gema  Bibliografía
+
+ Esta gema permite crear objetos Libro::Bibliografia con el fin de guardar y mostrar la información relacionada a un libro (autor,titulo,serie,editorial,edición,fecha de publicación y números de ISBN) 
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'bibliografia'
+gem 'Bibliografia'
 ```
 
 And then execute:
@@ -18,11 +19,13 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install bibliografia
+    $ gem install Bibliografia
 
 ## Usage
 
-TODO: Write usage instructions here
+ @b1 = Libro::Bibliografia.new({:autor =>['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => 'July 7, 2013',:isbn => ['ISBN-13: 978-1937785499','ISBN-10: 1937785491']})
+			
+  @b1.to_s
 
 ## Development
 
@@ -32,8 +35,8 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/bibliografia/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+
+1. Create your feature branch (`git checkout -b my-new-feature`)
+2. Commit your changes (`git commit -am 'Add some feature'`)
+3. Push to the branch (`git push origin my-new-feature`)
+4. Create a new Pull Request

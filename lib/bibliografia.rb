@@ -1,4 +1,4 @@
-#require "bibliografia/version"
+require "bibliografia/version"
 
 module Libro
  	class Bibliografia
