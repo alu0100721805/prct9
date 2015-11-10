@@ -129,6 +129,14 @@ describe Libro do
 
 
 	  end 
+	  describe 'Expectativas clase Lista de una Bibliografia' do
+		it ' Expectativa Debe existir un Nodo de la lista con sus datos y su siguiente' do
+
+	        expect(nodo = Libro::Node.new(@b1,nil)).to eql((nodo.value == @b1) && (nodo.next == nil))
+
+	       end
+
+	  end
 	  
  
 end
