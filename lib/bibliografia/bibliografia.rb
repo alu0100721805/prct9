@@ -1,5 +1,3 @@
-require "bibliografia/version"
-
 module Libro
  	class Bibliografia
 		def initialize(texto)
@@ -37,7 +35,23 @@ module Libro
 
 		end
 		attr_reader :autor,:titulo,:serie,:editorial,:edicion,:fecha,:isbn
-		def to_s()
+		def to_s
+			cadena = "" 
+			cadena << @titulo
+			@autor.each { |x| cadena << x}
+			if(@serie != nil)
+		        cadena << @serie
+			end
+			cadena << @editorial 
+			cadena << @edicion 
+			cadena << @fecha 
+                        @isbn.each { |x| cadena << x}
+			return cadena
+			
+		end
+		def mostrar
+
+
 			puts
 			puts "\t <<<<<<<< BIBLIOGRAFIA <<<<<<<< "
 			print (" AUTOR/ES: ")
@@ -49,6 +63,7 @@ module Libro
 			puts (" EDITORIAL-EDICIÓN-FECHA PUBLICACIÓN : " << @editorial << "; " << @edicion << " (" << @fecha << ")")
 			@isbn.each{ |x| print (" " << x << "\n")}
 
+		
 		end
 	end
 

@@ -1,9 +1,9 @@
 
-# Práctica de Laboratorio #6. Desarrollo Dirigido por Pruebas (TDD)  GRUPO LPP-43 CURSO 2015-2016
+# Práctica de Laboratorio #7. Programación Orientada a Objetos (TDD y POO) Juan José Gregorio Díaz Marrero CURSO 2015-2016
 
 # Gema  Bibliografía
 
- Esta gema permite crear objetos Libro::Bibliografia con el fin de guardar y mostrar la información relacionada a un libro (autor,titulo,serie,editorial,edición,fecha de publicación y números de ISBN) 
+ Esta gema permite crear objetos Libro::Bibliografia con el fin de guardar y mostrar la información relacionada a un libro (autor,titulo,serie,editorial,edición,fecha de publicación y números de ISBN). Además se implementa una lista de este tipo de objetos.
 
 ## Installation
 
@@ -22,11 +22,15 @@ Or install it yourself as:
     $ gem install Bibliografia
 
 ## Usage
-
+Bibliografia:
  @b1 = Libro::Bibliografia.new({:autor =>['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => 'July 7, 2013',:isbn => ['ISBN-13: 978-1937785499','ISBN-10: 1937785491']})
 			
   @b1.to_s
+:Bibliografia
+Lista-Bibliografia:
 
+
+:Lista-Bibliografia
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
