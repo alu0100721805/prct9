@@ -9,6 +9,7 @@ describe Libro do
 	   puts @b1.to_s
 	
 	    @nodo = Libro::Node.new(@b1,nil,nil)
+	    @l1 = Libro::Lista.new(@nodo)
 		
 	  end
 	  
@@ -144,6 +145,15 @@ describe Libro do
 		expect(l1).to respond_to(:head)
 		expect(l1).to respond_to(:tail) 	
 		expect(l1.head).to be(@nodo)
+
+	       end
+	       it ' Expectativa Se extrae el primer elemento de la lista' do
+		
+		expect(@l1).to respond_to(:pop)
+		expect(@l1).to respond_to(:shift) 	
+		expect(@l1.pop).to be(@nodo)
+		expect(@l1.shift).to be(@nodo)
+		
 
 	       end
 
