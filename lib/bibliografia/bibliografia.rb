@@ -1,4 +1,5 @@
 module Libro
+	Node = Struct.new(:value,:next)
  	class Bibliografia
 		def initialize(texto)
 			 raise ArgumentError,'Argumento "texto" no debe ser nulo' unless texto != nil
@@ -64,6 +65,16 @@ module Libro
 			@isbn.each{ |x| print (" " << x << "\n")}
 
 		
+		end
+		#Se sobreescribe el operador "==" para que la clase aprenda a compararse con objetos de su misma clase
+		def ==(obj)
+
+			raise ArgumentError, 'El argumento pasado debe ser del tipo Libro::Bibliografia' unless obj.is_a? Libro::Bibliografia
+
+				if((@autor.eql? obj.autor) && (@titulo.eql? obj.titulo) && (@serie.eql? obj.serie) && (@editorial.eql? obj.editorial) && (@edicion.eql? obj.edicion) && (@fecha.eql? obj.fecha) && (@isbn.eql? obj.isbn)) then
+					return true
+			        end
+				return false
 		end
 	end
 
