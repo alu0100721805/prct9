@@ -1,5 +1,5 @@
 module Libro
-	Node = Struct.new(:value,:next)
+	Node = Struct.new(:value,:next,:prev)
  	class Bibliografia
 		def initialize(texto)
 			 raise ArgumentError,'Argumento "texto" no debe ser nulo' unless texto != nil
@@ -86,6 +86,36 @@ module Libro
 		@size = 1
 		end
 		attr_reader :head, :tail,:size
+		def pop
+			if(@head != nil) then
+				@size -= 1
+				aux = @head
+		       		@head = @head.next
+				puts "Entro"
+		       		if (@head != nil) then
+				   @head.prev = nil	
+			 	end
+				return aux
+			else
+			  return nil
+			end
+		end
+		def shift
+			if(@tail != nil) then
+				@size -= 1
+				aux = @tail
+		       		@tail = @tail.next
+		       		if (@tail != nil) then
+				   @tail.next = nil
+			 	end
+				return aux
+			else
+			  return nil
+			end	 
+ 	        end
+
+
+
 
 	end
 
