@@ -8,7 +8,7 @@ describe Libro do
 			
 	   puts @b1.to_s
 	
-	    
+	    @nodo = Libro::Node.new(@b1,nil)
 		
 	  end
 	  
@@ -131,9 +131,19 @@ describe Libro do
 	  end 
 	  describe 'Expectativas clase Lista de una Bibliografia' do
 		it ' Expectativa Debe existir un Nodo de la lista con sus datos y su siguiente' do
-		nodo = Libro::Node.new(@b1,nil)
-	        expect(nodo.value).to eql(@b1)
-		expect(nodo.next).to eql(nil)
+		
+	        expect(@nodo.value).to eql(@b1)
+		expect(@nodo.next).to eql(nil)
+
+	       end
+	       it ' Expectativa Debe existir una Lista con su cabeza' do
+		
+	        expect{l1 = Libro::Lista.new(nil)}.to raise_error(ArgumentError)
+		l1 = Libro::Lista.new(@nodo)
+		#Se utiliza una expectativa con la comparción por identidad del objeto
+		expect(l1).to respond_to(:head)
+		expect(l1).to respond_to(:tail) 	
+		expect(l1.head).to be(@nodo)
 
 	       end
 
