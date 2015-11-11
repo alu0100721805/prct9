@@ -8,7 +8,7 @@ describe Libro do
 			
 	   puts @b1.to_s
 	
-	    @nodo = Libro::Node.new(@b1,nil)
+	    @nodo = Libro::Node.new(@b1,nil,nil)
 		
 	  end
 	  
