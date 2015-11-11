@@ -77,5 +77,19 @@ module Libro
 				return false
 		end
 	end
+	class Lista
+		def initialize(obj)
+		raise ArgumentError, "La lista no puede ser nil" unless (obj !=nil)
+		raise ArgumentError, "El argumento debe ser del tipo Libro::Node" unless (obj.is_a? Libro::Node)
+		@head = obj
+		@tail = @head
+		@size = 1
+		end
+		attr_reader :head, :tail,:size
+
+	end
+
+
+	
 
 end
