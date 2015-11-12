@@ -90,10 +90,9 @@ module Libro
 			if(@head != nil) then
 				@size -= 1
 				aux = @head
-		       		@head = @head.next
-				puts "Entro"
+		       		@head = @head.prev
 		       		if (@head != nil) then
-				   @head.prev = nil	
+				   @head.next = nil	
 			 	end
 				return aux
 			else
@@ -106,16 +105,15 @@ module Libro
 				aux = @tail
 		       		@tail = @tail.next
 		       		if (@tail != nil) then
-				   @tail.next = nil
+				   @tail.prev = nil
 			 	end
 				return aux
 			else
 			  return nil
 			end	 
  	        end
-
-
-
+		
+		
 
 	end
 
