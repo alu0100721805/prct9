@@ -39,7 +39,17 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 	assert_equal( @nodo5.value.to_s,@nodo6.value.to_s)
   end
   def test_type_check
- 
+
+ 	#Nodo creado e insertado en una lista Pruebas
+ 	assert_kind_of(Libro::Node,@nodo1)
+	assert_instance_of(Libro::Node,@nodo1)
+	assert_kind_of(Libro::Bibliografia,@nodo1.value)
+        assert_instance_of(Libro::Bibliografia,@nodo1.value)
+	assert_kind_of(Libro::Lista,@lista)
+	assert_instance_of(Libro::Lista,@lista)
+       #Nodo Devuelto por la lista Pruebas
+	assert_kind_of(Libro::Node,@nodo6)
+	assert_instance_of(Libro::Node,@nodo6)
   end
 
 end
