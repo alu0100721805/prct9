@@ -22,15 +22,21 @@ Or install it yourself as:
     $ gem install Bibliografia
 
 ## Usage
-Bibliografia:
+
  @b1 = Libro::Bibliografia.new({:autor =>['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => 'July 7, 2013',:isbn => ['ISBN-13: 978-1937785499','ISBN-10: 1937785491']})
 			
   @b1.to_s
-:Bibliografia
-Lista-Bibliografia:
 
+ nodo = Libro::Node.new(@b1,nil,nil)
+ l1 = Libro::Lista.new(nodo)
+ l1.push(nodo)-> Entra por la cabeza de la lista
+ l1.unshift(nodo) -> Entra por la cola de la lista
+ nodorec = l1.pop -> Extrae el elemento apuntado por la cabeza de la lista
+ nodorec = l1.shift -> Extrae el elemento apuntado por la cola de la lista
+ l1.each -> Mixing Enumerable
+ l1.mostrar -> Muestra salida formateada de la lista sin retornar nada
+ l1.to_s -> Convierte Toda la lista en una cadena , insertando por cada nodo un "\n" 
 
-:Lista-Bibliografia
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
