@@ -31,7 +31,12 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 	    #nodo10 == nodo1
   end
   def test_simple
-   	
+
+   	assert_equal( @nodo1.value.to_s,@nodo10.value.to_s)
+	assert_equal( @nodo2.value.to_s,@nodo8.value.to_s)
+	assert_equal( @nodo3.value.to_s,@nodo9.value.to_s)
+	assert_equal( @nodo4.value.to_s,@nodo7.value.to_s)
+	assert_equal( @nodo5.value.to_s,@nodo6.value.to_s)
   end
   def test_type_check
  
