@@ -78,6 +78,7 @@ module Libro
 		end
 	end
 	class Lista
+		include Enumerable
 		def initialize(obj)
 		raise ArgumentError, "La lista no puede ser nil" unless (obj !=nil)
 		raise ArgumentError, "El argumento debe ser del tipo Libro::Node" unless (obj.is_a? Libro::Node)
@@ -138,7 +139,21 @@ module Libro
 		      puts
 
 		end
-		
+		def each
+		      aux = @head
+		      while aux != nil do
+			yield aux
+			aux = aux.prev
+		      end
+		end
+		def mostrar
+			self.each{ |x| x.value.mostrar}
+		end
+		def to_s
+			cadena = ""
+			self.each{ |x| cadena << x.value.to_s << "\n"}
+			return cadena
+		end
 
 	end
 

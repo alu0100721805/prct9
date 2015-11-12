@@ -156,7 +156,7 @@ describe Libro do
 	
 	       end
 	        it ' Expectativa Se puede recorrer y retornar toda la lista' do
-
+		
 		expect(@l1).to respond_to(:to_s)
 		expect(@l1.to_s).to eq("Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ GuideDave ThomasAndy HuntChad FowlerThe Facets of RubyPragmatic Bookshelf4 editionJuly 7, 2013ISBN-13: 978-1937785499ISBN-10: 1937785491\n")
 		expect(@l1).to respond_to(:mostrar)
