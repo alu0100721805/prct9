@@ -113,30 +113,36 @@ module Libro
 			  return nil
 			end	 
  	        end
-		 def push(nodo)
-		      raise ArgumentError, "El argumento debe ser del tipo Libro::Node" unless nodo.is_a? Libro::Node 
-		      
-		      if (@head != nil) then
-			@head.next = nodo
-		      end
-		      nodo.prev = @head
-		      nodo.next = nil
-		      @head = nodo
-		      @size += 1
+		 def push(*args)
+		    raise ArgumentError,"Se deben pasar uno o más nodos " unless args.length > 0 
+			args.each do |nodo|
+			      raise ArgumentError, "El argumento debe ser del tipo Libro::Node" unless nodo.is_a? Libro::Node 
+			      
+			      if (@head != nil) then
+				@head.next = nodo
+			      end
+			      nodo.prev = @head
+			      nodo.next = nil
+			      @head = nodo
+			      @size += 1
+			end
 		      puts
     		end
-		def unshift(nodo)
-		      raise ArgumentError, "El argumento debe ser del tipo Libro::Node" unless nodo.is_a? Libro::Node 
-		   
-		      
-		      if (@tail != nil) then
-			@tail.prev = nodo
-		      end
-		      nodo.next = @tail		
-		      nodo.prev = nil
-		      @tail = nodo
-		      @size += 1
-		      puts
+		def unshift(*args)
+		     raise ArgumentError,"Se deben pasar uno o más nodos " unless args.length > 0 
+		     	 args.each do |nodo|
+
+			raise ArgumentError, "El argumento debe ser del tipo Libro::Node" unless nodo.is_a? Libro::Node 
+
+				if (@tail != nil) then
+					@tail.prev = nodo
+				end
+				nodo.next = @tail		
+				nodo.prev = nil
+				@tail = nodo
+				@size += 1
+				end
+				puts
 
 		end
 		def each

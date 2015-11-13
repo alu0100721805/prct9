@@ -162,6 +162,8 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 		  expect(@l1).to respond_to(:unshift)
 		  @l1.push(@nodo2,@nodo3)
 		  expect(@l1.size).to be == 3
+		  @l1.unshift(@nodo4,@nodo5)
+		  expect(@l1.size).to be == 5
 	      end 
 	       it ' Expectativa Se extrae el primer elemento de la lista' do
 		
