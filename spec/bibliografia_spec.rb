@@ -2,14 +2,23 @@ require 'bibliografia/bibliografia.rb'
 require 'spec_helper'
 
 describe Libro do
-	  before(:all) do
+	  before(:each) do
 	    
 	    @b1 = Libro::Bibliografia.new({:autor =>['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => 'July 7, 2013',:isbn =>['ISBN-13: 978-1937785499','ISBN-10: 1937785491']})
 			
-	   puts @b1.to_s
 	
 	    @nodo = Libro::Node.new(@b1,nil,nil)
 	    @l1 = Libro::Lista.new(@nodo)
+	    @nodo1 = Libro::Node.new(Libro::Bibliografia.new({:autor =>['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => 'July 7, 2013',:isbn =>['ISBN-13: 978-1937785499','ISBN-10: 1937785491']}),nil,nil)
+			
+	    @nodo2 = Libro::Node.new(Libro::Bibliografia.new({:autor =>['Scott Chacon'],:titulo =>'Pro Git 2009th Edition',:serie => 'Pro',:editorial =>'Apress',:edicion => '2009 edition',:fecha => 'August 27, 2009',:isbn => ['ISBN-13: 978-1430218333','ISBN-10: 1430218339']}),nil,nil)
+ 
+	    @nodo3 = Libro::Node.new(Libro::Bibliografia.new({:autor =>['David Flanagan','Yukihiro Matsumoto'],:titulo =>'The Ruby Programming Language',:serie => '',:editorial => 'O’Reilly Media',:edicion => '1 edition',:fecha => 'February 4, 2008',:isbn => ['ISBN-10: 0596516177','SBN-13: 978-0596516178']}),nil,nil)
+ 
+	    @nodo4 = Libro::Node.new(Libro::Bibliografia.new({:autor =>['David Chelimsky','Dave Astels','Bryan Helmkamp','Dan North','Zach
+Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '1 edition',:fecha => 'December 25, 2010',:isbn => ['ISBN-10: 1934356379','ISBN-13: 978-1934356371']}),nil,nil) 
+
+	    @nodo5 = Libro::Node.new(Libro::Bibliografia.new({:autor =>['Richard E.'],:titulo =>'Silverman Git Pocket Guide',:serie => '',:editorial => 'O’Reilly Media',:edicion => '1 edition',:fecha => 'August 2, 2013',:isbn => ['ISBN-10: 1449325866','ISBN-13: 978-1449325862']}),nil,nil) 
 		
 	  end
 	  
@@ -147,13 +156,20 @@ describe Libro do
 		expect(l1.head).to be(@nodo)
 
 	       end
+	       it ' Expectativa Se pueden Insertar varios elementos en la lista' do
+
+		  expect(@l1).to respond_to(:push)
+		  expect(@l1).to respond_to(:unshift)
+		  @l1.push(@nodo2,@nodo3)
+		  expect(@l1.size).to be == 3
+	      end 
 	       it ' Expectativa Se extrae el primer elemento de la lista' do
 		
 		expect(@l1).to respond_to(:pop)
 		expect(@l1).to respond_to(:shift) 	
 		expect(@l1.pop).to be(@nodo)
 		expect(@l1.shift).to be(@nodo)
-	
+		
 	       end
 	        it ' Expectativa Se puede recorrer y retornar toda la lista' do
 		
@@ -162,6 +178,7 @@ describe Libro do
 		expect(@l1).to respond_to(:mostrar)
 
 	       end
+	      
 
 	  end
 	  
