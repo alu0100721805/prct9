@@ -33,7 +33,7 @@ module Bibliografias
 		  	raise ArgumentError,'Argumento "isbn" debe ser un Array' unless texto[:isbn].is_a? Array
 		  	texto[:isbn].each {|x| raise ArgumentError,'El valor del array debe ser String' unless x.is_a? String}
 			@isbn = texto[:isbn]
-
+	
 		end
 		attr_reader :autor,:titulo,:serie,:editorial,:edicion,:fecha,:isbn
 		def to_s
@@ -163,6 +163,15 @@ module Bibliografias
 		end
 
 	end
+	class Libro < Bibliografias::Bibliografia
+		def initialize(texto)
+		   super(texto)
+		   @isbn = texto[:isbn]
+		  
+		end	
+	end
 
+
+	
 
 end
