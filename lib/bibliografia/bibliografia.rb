@@ -1,5 +1,5 @@
-module Libro
-	Node = Struct.new(:value,:next,:prev)
+module Bibliografias
+
  	class Bibliografia
 		def initialize(texto)
 			 raise ArgumentError,'Argumento "texto" no debe ser nulo' unless texto != nil
@@ -69,7 +69,7 @@ module Libro
 		#Se sobreescribe el operador "==" para que la clase aprenda a compararse con objetos de su misma clase
 		def ==(obj)
 
-			raise ArgumentError, 'El argumento pasado debe ser del tipo Libro::Bibliografia' unless obj.is_a? Libro::Bibliografia
+			raise ArgumentError, 'El argumento pasado debe ser del tipo Libro::Bibliografia' unless obj.is_a? Bibliografias::Bibliografia
 
 				if((@autor.eql? obj.autor) && (@titulo.eql? obj.titulo) && (@serie.eql? obj.serie) && (@editorial.eql? obj.editorial) && (@edicion.eql? obj.edicion) && (@fecha.eql? obj.fecha) && (@isbn.eql? obj.isbn)) then
 					return true
@@ -78,10 +78,11 @@ module Libro
 		end
 	end
 	class Lista
+		Node = Struct.new(:value,:next,:prev)
 		include Enumerable
 		def initialize(obj)
 		raise ArgumentError, "La lista no puede ser nil" unless (obj !=nil)
-		raise ArgumentError, "El argumento debe ser del tipo Libro::Node" unless (obj.is_a? Libro::Node)
+		raise ArgumentError, "El argumento debe ser del tipo Libro::Node" unless (obj.is_a? Bibliografias::Lista::Node)
 		@head = obj
 		@tail = @head
 		@size = 1
@@ -116,7 +117,7 @@ module Libro
 		 def push(*args)
 		    raise ArgumentError,"Se deben pasar uno o más nodos " unless args.length > 0 
 			args.each do |nodo|
-			      raise ArgumentError, "El argumento debe ser del tipo Libro::Node" unless nodo.is_a? Libro::Node 
+			      raise ArgumentError, "El argumento debe ser del tipo Libro::Node" unless nodo.is_a? Bibliografias::Lista::Node
 			      
 			      if (@head != nil) then
 				@head.next = nodo
@@ -132,7 +133,7 @@ module Libro
 		     raise ArgumentError,"Se deben pasar uno o más nodos " unless args.length > 0 
 		     	 args.each do |nodo|
 
-			raise ArgumentError, "El argumento debe ser del tipo Libro::Node" unless nodo.is_a? Libro::Node 
+			raise ArgumentError, "El argumento debe ser del tipo Libro::Node" unless nodo.is_a? Bibliografias::Lista::Node
 
 				if (@tail != nil) then
 					@tail.prev = nodo
