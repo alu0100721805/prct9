@@ -189,10 +189,26 @@ module Bibliografias
 	class Publicacion < Bibliografias::Bibliografia
 		def initialize (texto)
 		   super(texto)
-		end
-
+		    raise ArgumentError,'Argumento "issn" no debe ser nulo' unless texto[:issn] != nil
+		    raise ArgumentError,'Argumento "issn" debe ser un Array' unless texto[:issn].is_a? Array
+		    texto[:issn].each {|x| raise ArgumentError,'El valor del array debe ser String' unless x.is_a? String}
+		    @issn = texto[:issn]
+		    
+		    raise ArgumentError,'Argumento "enlace" debe ser un String o nil' unless ((texto[:enlace].is_a? String) || (texto[:enlace] == nil)) 
+		    @enlace = texto[:enlace] 
 	
+		end
+		attr_reader :issn,:enlace
+		def ==(obj)
+		      raise ArgumentError, 'El argumento pasado debe ser del tipo Bibliografias::Publicacion' unless obj.is_a? Bibliografias::Publicacion
+		      super(obj)
+		       if ((@issn.eql? obj.isb) && (@enlace.eql? obj.enlace)) then
+					return true
+		       end
+		       return false
+		end
 	end 
+
 
 
 	
