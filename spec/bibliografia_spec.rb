@@ -21,7 +21,7 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 	    @nodo5 = Bibliografias::Lista::Node.new(Bibliografias::Bibliografia.new({:autor =>['Richard E.'],:titulo =>'Silverman Git Pocket Guide',:serie => '',:editorial => 'O’Reilly Media',:edicion => '1 edition',:fecha => 'August 2, 2013'}),nil,nil) 
 
 	   @libro1 = Bibliografias::Libro.new({:autor =>['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => 'July 7, 2013',:isbn =>['ISBN-13: 978-1937785499','ISBN-10: 1937785491']})
-	   @publicacion1 = Bibliografias::Publicacion.new({:autor =>['Juan Díaz'],:titulo => 'Artículo Práctico Herencia Ruby',:editorial => 'Pepito',:edicion => 'Digital',:fecha => 'Diciembre 20, 2015',:ISSN => ['ISSN: 1234-1234'],:enlace => nil})
+	   @publicacion1 = Bibliografias::Publicacion.new({:autor =>['Juan Díaz'],:titulo => 'Artículo Práctico Herencia Ruby',:editorial => 'Pepito',:edicion => 'Digital',:fecha => 'Diciembre 20, 2015',:issn=> ['ISSN: 1234-1234'],:enlace => nil})
 	
 		
 	  end
@@ -148,6 +148,13 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 		 expect(@publicacion1).to be_kind_of(Bibliografias::Publicacion) 
 		 expect(@publicacion1).to be_instance_of(Bibliografias::Publicacion) 
 		
+		end
+		it 'Expectativa Atributos propios de una Clase Publicacion' do
+		   expect{@publicacion1 = Bibliografias::Publicacion.new({:autor =>['Juan Díaz'],:titulo => 'Artículo Práctico Herencia Ruby',:editorial => 'Pepito',:edicion => 'Digital',:fecha => 'Diciembre 20, 2015',:issn => nil,:enlace => nil})}.to raise_error(ArgumentError)
+		   expect(@publicacion1).to respond_to(:issn)
+		   expect(@publicacion1).to respond_to(:enlace)
+	           expect(@libro1.isbn).to contain_exactly('ISSN: 1234-1234')
+		   expect(@libro1.enlace).to eql(nil)
 		end
 	  
 
