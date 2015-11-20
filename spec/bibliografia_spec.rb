@@ -20,7 +20,7 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 
 	    @nodo5 = Bibliografias::Lista::Node.new(Bibliografias::Bibliografia.new({:autor =>['Richard E.'],:titulo =>'Silverman Git Pocket Guide',:serie => '',:editorial => 'O’Reilly Media',:edicion => '1 edition',:fecha => 'August 2, 2013'}),nil,nil) 
 
-	   @libro1 = Bibliografias::Libro.new({:autor =>['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => 'July 7, 2013'})
+	   @libro1 = Bibliografias::Libro.new({:autor =>['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => 'July 7, 2013',:isbn =>['ISBN-13: 978-1937785499','ISBN-10: 1937785491']})
 	
 		
 	  end
@@ -123,16 +123,17 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 		it ' Expectativa Debe existir una clase Libro de una Bibliografia' do
 		
 
-		 expect(libro1).to be_kind_of(Bibliografias::Libro) 
-		 expect(libro1).to be_instance_of(Bibliografias::Libro) 
+		 expect(@libro1).to be_kind_of(Bibliografias::Libro) 
+		 expect(@libro1).to be_instance_of(Bibliografias::Libro) 
 		
 		end
 	      	
-		it 'Expectativa Atributos propios de una Clase Libro de un Libro' do
+		it 'Expectativa Atributos propios de una Clase Libro' do
 		   expect{@libro1 = Bibliografias::Libro.new({:autor => ['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => 'July 7, 2013',:isbn => nil})}.to raise_error(ArgumentError)
 		   expect(@libro1).to respond_to(:isbn)
 	           expect(@libro1.isbn).to contain_exactly('ISBN-13: 978-1937785499','ISBN-10: 1937785491')
 		end
+		
 
 	   end
 	  

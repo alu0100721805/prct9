@@ -29,13 +29,9 @@ module Bibliografias
 			raise ArgumentError,'Argumento "fecha" debe ser String' unless texto[:fecha].is_a? String
 			@fecha = texto[:fecha]
 
-			raise ArgumentError,'Argumento "isbn" no debe ser nulo' unless texto[:isbn] != nil
-		  	raise ArgumentError,'Argumento "isbn" debe ser un Array' unless texto[:isbn].is_a? Array
-		  	texto[:isbn].each {|x| raise ArgumentError,'El valor del array debe ser String' unless x.is_a? String}
-			@isbn = texto[:isbn]
 	
 		end
-		attr_reader :autor,:titulo,:serie,:editorial,:edicion,:fecha,:isbn
+		attr_reader :autor,:titulo,:serie,:editorial,:edicion,:fecha
 		def to_s
 			cadena = "" 
 			cadena << @titulo
@@ -46,7 +42,6 @@ module Bibliografias
 			cadena << @editorial 
 			cadena << @edicion 
 			cadena << @fecha 
-                        @isbn.each { |x| cadena << x}
 			return cadena
 			
 		end
@@ -62,16 +57,16 @@ module Bibliografias
 		        puts (" SERIE : (" << @serie << ")") 
 			end
 			puts (" EDITORIAL-EDICIÓN-FECHA PUBLICACIÓN : " << @editorial << "; " << @edicion << " (" << @fecha << ")")
-			@isbn.each{ |x| print (" " << x << "\n")}
+			
 
 		
 		end
 		#Se sobreescribe el operador "==" para que la clase aprenda a compararse con objetos de su misma clase
 		def ==(obj)
 
-			raise ArgumentError, 'El argumento pasado debe ser del tipo Libro::Bibliografia' unless obj.is_a? Bibliografias::Bibliografia
+			raise ArgumentError, 'El argumento pasado debe ser del tipo Bibliografias::Bibliografia' unless obj.is_a? Bibliografias::Bibliografia
 
-				if((@autor.eql? obj.autor) && (@titulo.eql? obj.titulo) && (@serie.eql? obj.serie) && (@editorial.eql? obj.editorial) && (@edicion.eql? obj.edicion) && (@fecha.eql? obj.fecha) && (@isbn.eql? obj.isbn)) then
+				if((@autor.eql? obj.autor) && (@titulo.eql? obj.titulo) && (@serie.eql? obj.serie) && (@editorial.eql? obj.editorial) && (@edicion.eql? obj.edicion) && (@fecha.eql? obj.fecha)) then
 					return true
 			        end
 				return false
@@ -82,7 +77,7 @@ module Bibliografias
 		include Enumerable
 		def initialize(obj)
 		raise ArgumentError, "La lista no puede ser nil" unless (obj !=nil)
-		raise ArgumentError, "El argumento debe ser del tipo Libro::Node" unless (obj.is_a? Bibliografias::Lista::Node)
+		raise ArgumentError, "El argumento debe ser del tipo Bibliografias::Node" unless (obj.is_a? Bibliografias::Lista::Node)
 		@head = obj
 		@tail = @head
 		@size = 1
@@ -117,7 +112,7 @@ module Bibliografias
 		 def push(*args)
 		    raise ArgumentError,"Se deben pasar uno o más nodos " unless args.length > 0 
 			args.each do |nodo|
-			      raise ArgumentError, "El argumento debe ser del tipo Libro::Node" unless nodo.is_a? Bibliografias::Lista::Node
+			      raise ArgumentError, "El argumento debe ser del tipo Bibliografias::Node" unless nodo.is_a? Bibliografias::Lista::Node
 			      
 			      if (@head != nil) then
 				@head.next = nodo
@@ -133,7 +128,7 @@ module Bibliografias
 		     raise ArgumentError,"Se deben pasar uno o más nodos " unless args.length > 0 
 		     	 args.each do |nodo|
 
-			raise ArgumentError, "El argumento debe ser del tipo Libro::Node" unless nodo.is_a? Bibliografias::Lista::Node
+			raise ArgumentError, "El argumento debe ser del tipo Bibliografias::Node" unless nodo.is_a? Bibliografias::Lista::Node
 
 				if (@tail != nil) then
 					@tail.prev = nodo
@@ -166,8 +161,20 @@ module Bibliografias
 	class Libro < Bibliografias::Bibliografia
 		def initialize(texto)
 		   super(texto)
+		   raise ArgumentError,'Argumento "isbn" no debe ser nulo' unless texto[:isbn] != nil
+		  	raise ArgumentError,'Argumento "isbn" debe ser un Array' unless texto[:isbn].is_a? Array
+		  	texto[:isbn].each {|x| raise ArgumentError,'El valor del array debe ser String' unless x.is_a? String}
+			@isbn = texto[:isbn]
 		   @isbn = texto[:isbn]
-		  
+		end
+		attr_reader :isbn
+	        def ==(obj)
+		      raise ArgumentError, 'El argumento pasado debe ser del tipo Bibliografias::Libro' unless obj.is_a? Bibliografias::Libro
+		      super(obj)
+		       if (@isbn.eql? obj.isb) then
+					return true
+		       end
+		       return false
 		end	
 	end
 
