@@ -22,7 +22,7 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 
 	   @libro1 = Bibliografias::Libro.new({:autor =>['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => 'July 7, 2013',:isbn =>['ISBN-13: 978-1937785499','ISBN-10: 1937785491']})
 	   @publicacion1 = Bibliografias::Publicacion.new({:autor =>['Juan Díaz'],:titulo => 'Artículo Práctico Herencia Ruby',:editorial => 'Pepito',:edicion => 'Digital',:fecha => 'Diciembre 20, 2015',:issn=> ['ISSN: 1234-1234'],:enlace =>nil})
-	
+	   puts @publicacion1.to_s
 		
 	  end
 	  
@@ -155,6 +155,11 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 		   expect(@publicacion1).to respond_to(:enlace)
 	           expect(@publicacion1.issn).to contain_exactly('ISSN: 1234-1234')
 		   expect(@publicacion1.enlace).to eql(nil)
+		end
+		it 'Expectativa metodos to_s y mostrar una clase Publicacion' do
+		   expect(@publicacion1).to respond_to(:mostrar)
+		   expect(@publicacion1).to respond_to(:to_s)
+		   expect(@publicacion1.to_s).to eql("Artículo Práctico Herencia RubyJuan DíazPepitoDigitalDiciembre 20, 2015ISSN: 1234-1234")
 		end
 	  
 
