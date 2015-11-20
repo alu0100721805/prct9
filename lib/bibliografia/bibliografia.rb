@@ -175,6 +175,15 @@ module Bibliografias
 					return true
 		       end
 		       return false
+		end
+		def mostrar
+		    super 
+		    @isbn.each{ |x| print (" " << x << "\n")}
+		end
+		def to_s
+		   cadena = super
+		   @isbn.each { |x| cadena << x}
+	           return cadena
 		end	
 	end
 
