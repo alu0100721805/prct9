@@ -21,6 +21,7 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 	    @nodo5 = Bibliografias::Lista::Node.new(Bibliografias::Bibliografia.new({:autor =>['Richard E.'],:titulo =>'Silverman Git Pocket Guide',:serie => '',:editorial => 'O’Reilly Media',:edicion => '1 edition',:fecha => 'August 2, 2013'}),nil,nil) 
 
 	   @libro1 = Bibliografias::Libro.new({:autor =>['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => 'July 7, 2013',:isbn =>['ISBN-13: 978-1937785499','ISBN-10: 1937785491']})
+	   @publicacion1 = Bibliografias::Publicacion.new({:autor =>['Juan Díaz'],:titulo => 'Artículo Práctico Herencia Ruby',:editorial => 'Pepito',:edicion => 'Digital',:fecha => 'Diciembre 20, 2015',:ISSN => ['ISSN: 1234-1234'],:enlace => nil})
 	
 		
 	  end
@@ -138,6 +139,17 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 		   expect(@libro1).to respond_to(:to_s)
 		   expect(@libro1.to_s).to eql('Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ GuideDave ThomasAndy HuntChad FowlerThe Facets of RubyPragmatic Bookshelf4 editionJuly 7, 2013ISBN-13: 978-1937785499ISBN-10: 1937785491')
 		end
+
+	   end
+	    describe 'Expectativas Clase Publicacion < Bibliografia ' do
+		it ' Expectativa Debe existir una clase Publicacion < Bibliografia' do
+		
+
+		 expect(@publicacion1).to be_kind_of(Bibliografias::Publicacion) 
+		 expect(@publicacion1).to be_instance_of(Bibliografias::Publicacion) 
+		
+		end
+	  
 
 	   end
 	  
