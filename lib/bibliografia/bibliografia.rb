@@ -165,6 +165,4 @@ module Bibliografias
 	end
 
 
-	
-
 end

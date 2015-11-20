@@ -19,6 +19,7 @@ describe Bibliografias do
 Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '1 edition',:fecha => 'December 25, 2010',:isbn => ['ISBN-10: 1934356379','ISBN-13: 978-1934356371']}),nil,nil) 
 
 	    @nodo5 = Bibliografias::Lista::Node.new(Bibliografias::Bibliografia.new({:autor =>['Richard E.'],:titulo =>'Silverman Git Pocket Guide',:serie => '',:editorial => 'O’Reilly Media',:edicion => '1 edition',:fecha => 'August 2, 2013',:isbn => ['ISBN-10: 1449325866','ISBN-13: 978-1449325862']}),nil,nil) 
+	
 		
 	  end
 	  
@@ -180,6 +181,20 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 		expect(@l1).to respond_to(:mostrar)
 
 	       end
+	      
+
+	  end
+	
+	    describe 'Expectativas Clase Libro < Bibliografia ' do
+		it ' Expectativa Debe existir una clase Libro de una Bibliografia' do
+		
+
+	    	libro1 = Bibliografias::Libro.new({:autor =>['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => 'July 7, 2013',:isbn =>['ISBN-13: 978-1937785499','ISBN-10: 1937785491']})
+
+		 expect(libro1).to be_kind_of(Bibliografias::Libro) 
+		 expect(libro1).to be_instance_of(Bibliografias::Libro) 
+		
+		end
 	      
 
 	  end
