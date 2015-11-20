@@ -186,6 +186,13 @@ module Bibliografias
 	           return cadena
 		end	
 	end
+	class Publicacion < Bibliografias::Bibliografia
+		def initialize (texto)
+		   super(texto)
+		end
+
+	
+	end 
 
 
 	
