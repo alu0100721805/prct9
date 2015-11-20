@@ -177,8 +177,9 @@ module Bibliografias
 		       return false
 		end
 		def mostrar
-		    super 
+		    super
 		    @isbn.each{ |x| print (" " << x << "\n")}
+		    puts ""
 		end
 		def to_s
 		   cadena = super
@@ -207,6 +208,22 @@ module Bibliografias
 		       end
 		       return false
 		end
+		def mostrar
+		    super 
+		    if(@enlace != nil)
+		        puts (" ENLACE : (" << @enlace << ")") 
+		    end
+		    @issn.each{ |x| print (" " << x << "\n")}
+	            puts ""
+		end
+		def to_s
+		   cadena = super
+		   if (@enlace != nil)
+		    cadena << @enlace
+		   end
+		   @issn.each { |x| cadena << x}
+	           return cadena
+		end	
 	end 
 
 
