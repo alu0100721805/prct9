@@ -133,7 +133,11 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 		   expect(@libro1).to respond_to(:isbn)
 	           expect(@libro1.isbn).to contain_exactly('ISBN-13: 978-1937785499','ISBN-10: 1937785491')
 		end
-		
+		it 'Expectativa metodos to_s y mostrar una clase Libro' do
+		   expect(@libro1).to respond_to(:mostrar)
+		   expect(@libro1).to respond_to(:to_s)
+		   expect(@libro1.to_s).to eql('Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ GuideDave ThomasAndy HuntChad FowlerThe Facets of RubyPragmatic Bookshelf4 editionJuly 7, 2013ISBN-13: 978-1937785499ISBN-10: 1937785491')
+		end
 
 	   end
 	  
