@@ -62,8 +62,9 @@ module Bibliografias
 		
 		end
 		#Se sobreescribe el operador "==" para que la clase aprenda a compararse con objetos de su misma clase
-		def ==(obj)
-
+		def ==(obj) 
+			
+			raise ArgumentError,'El agrumento pasado no debe ser nil' unless (!obj.nil?)	
 			raise ArgumentError, 'El argumento pasado debe ser del tipo Bibliografias::Bibliografia' unless obj.is_a? Bibliografias::Bibliografia
 
 				if((@autor.eql? obj.autor) && (@titulo.eql? obj.titulo) && (@serie.eql? obj.serie) && (@editorial.eql? obj.editorial) && (@edicion.eql? obj.edicion) && (@fecha.eql? obj.fecha)) then
@@ -76,8 +77,13 @@ module Bibliografias
 		Node = Struct.new(:value,:next,:prev)
 		include Enumerable
 		def initialize(obj)
-		raise ArgumentError, "La lista no puede ser nil" unless (obj !=nil)
-		raise ArgumentError, "El argumento debe ser del tipo Bibliografias::Node" unless (obj.is_a? Bibliografias::Lista::Node)
+		raise ArgumentError, "La lista no puede ser nil" unless (!obj.nil? )
+		raise ArgumentError, "El argumento debe ser del tipo Bibliografias::Node" unless ((obj.is_a? Bibliografias::Lista::Node) ||
+(obj.is_a? Bibliografias::Bibliografia ))
+		if(obj.is_a? Bibliografias::Bibliografia)then
+		 	obj = Bibliografias::Lista::Node.new(obj)
+		
+		end
 		@head = obj
 		@tail = @head
 		@size = 1
@@ -169,6 +175,7 @@ module Bibliografias
 		end
 		attr_reader :isbn
 	        def ==(obj)
+		      raise ArgumentError,'El agrumento pasado no debe ser nil' unless (!obj.nil?)
 		      raise ArgumentError, 'El argumento pasado debe ser del tipo Bibliografias::Libro' unless obj.is_a? Bibliografias::Libro
 		      super(obj)
 		       if (@isbn.eql? obj.isb) then
@@ -201,8 +208,9 @@ module Bibliografias
 		end
 		attr_reader :issn,:enlace
 		def ==(obj)
+                      raise ArgumentError,'El agrumento pasado no debe ser nil' unless (!obj.nil?)
 		      raise ArgumentError, 'El argumento pasado debe ser del tipo Bibliografias::Publicacion' unless obj.is_a? Bibliografias::Publicacion
-		      super(obj)
+			super(obj)
 		       if ((@issn.eql? obj.isb) && (@enlace.eql? obj.enlace)) then
 					return true
 		       end
