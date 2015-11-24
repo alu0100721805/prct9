@@ -1,18 +1,25 @@
 module Bibliografias
 
  	class Bibliografia
+	  include Comparable
 		def initialize(texto)
 			 raise ArgumentError,'Argumento "texto" no debe ser nulo' unless texto != nil
 		 	 raise ArgumentError,'Argumento "texto" debe ser un Hash' unless texto.is_a? Hash
+			
+			raise ArgumentError,'Argumento "titulo" no debe ser nulo' unless  texto[:titulo] != nil
+			raise ArgumentError,'Argumento "titulo" debe ser String' unless texto[:titulo].is_a? String
+			@titulo = texto[:titulo]
+			
+			raise ArgumentError,'Argumento "fecha" no debe ser nula' unless  texto[:fecha] != nil
+			raise ArgumentError,'Argumento "fecha" debe ser String' unless texto[:fecha].is_a? String
+			@fecha = texto[:fecha]
 
 			 raise ArgumentError,'Argumento "autor" no debe ser nulo' unless texto[:autor] != nil
 		  	 raise ArgumentError,'Argumento "autor" debe ser un Array' unless texto[:autor].is_a? Array
 		  	 texto[:autor].each {|x| raise ArgumentError,'El valor del array debe ser String' unless x.is_a? String}
 		  	 @autor = texto[:autor]
 
-			raise ArgumentError,'Argumento "titulo" no debe ser nulo' unless  texto[:titulo] != nil
-		 	raise ArgumentError,'Argumento "titulo" debe ser String' unless texto[:titulo].is_a? String
-		 	@titulo = texto[:titulo]
+			
 		
 			raise ArgumentError,'Argumento "serie" debe ser String o nil' unless ((texto[:serie].is_a? String) || (texto[:serie] == nil))
 			@serie = texto[:serie]
@@ -62,7 +69,7 @@ module Bibliografias
 		
 		end
 		#Se sobreescribe el operador "==" para que la clase aprenda a compararse con objetos de su misma clase
-		def ==(obj) 
+=begin		def ==(obj) 
 			
 			raise ArgumentError,'El agrumento pasado no debe ser nil' unless (!obj.nil?)	
 			raise ArgumentError, 'El argumento pasado debe ser del tipo Bibliografias::Bibliografia' unless obj.is_a? Bibliografias::Bibliografia
@@ -72,13 +79,46 @@ module Bibliografias
 			        end
 				return false
 		end
+=end
+		def <=>(obj)
+
+			if(!obj.nil?)then
+	raise ArgumentError, 'El argumento pasado debe ser del tipo Bibliografias::Bibliografia' unless obj.is_a? Bibliografias::Bibliografia
+
+				self.instance_variables.each do |x|
+					aobj1 = self.instance_variable_get(x)
+					aobj2 = obj.instance_variable_get(x)
+					if (!aobj1.eql? aobj2)then
+						if (aobj1.is_a? Array)
+							aobj1 = aobj1.join
+						end
+						if (aobj2.is_a? Array)
+							aobj2 = aobj2.join
+						end
+					   	if( aobj1 > aobj2) then
+					         #se devuelve el valor contrario para comparar por orden alfabético
+							return -1
+						else 
+							return 1
+						end
+					end
+				return 0
+				end
+			else
+
+				return nil
+			end
+
+
+		end
+
 	end
 	class Lista
 		Node = Struct.new(:value,:next,:prev)
 		include Enumerable
 		def initialize(obj)
 		raise ArgumentError, "La lista no puede ser nil" unless (!obj.nil? )
-		raise ArgumentError, "El argumento debe ser del tipo Bibliografias::Node" unless ((obj.is_a? Bibliografias::Lista::Node) ||
+		raise ArgumentError, "El argumento debe ser del tipo Bibliografias::Node o Bibliografias::Bibliografia" unless ((obj.is_a? Bibliografias::Lista::Node) ||
 (obj.is_a? Bibliografias::Bibliografia ))
 		if(obj.is_a? Bibliografias::Bibliografia)then
 		 	obj = Bibliografias::Lista::Node.new(obj)
@@ -118,7 +158,12 @@ module Bibliografias
 		 def push(*args)
 		    raise ArgumentError,"Se deben pasar uno o más nodos " unless args.length > 0 
 			args.each do |nodo|
-			      raise ArgumentError, "El argumento debe ser del tipo Bibliografias::Node" unless nodo.is_a? Bibliografias::Lista::Node
+		    raise ArgumentError, "El argumento debe ser del tipo Bibliografias::Node o Bibliografias::Bibliografia" unless ((nodo.is_a? Bibliografias::Lista::Node) ||(nodo.is_a? Bibliografias::Bibliografia ))
+
+			      if(nodo.is_a? Bibliografias::Bibliografia)then
+				nodo = Bibliografias::Lista::Node.new(nodo)
+		
+			      end
 			      
 			      if (@head != nil) then
 				@head.next = nodo
@@ -134,8 +179,12 @@ module Bibliografias
 		     raise ArgumentError,"Se deben pasar uno o más nodos " unless args.length > 0 
 		     	 args.each do |nodo|
 
-			raise ArgumentError, "El argumento debe ser del tipo Bibliografias::Node" unless nodo.is_a? Bibliografias::Lista::Node
+		    raise ArgumentError, "El argumento debe ser del tipo Bibliografias::Node o Bibliografias::Bibliografia" unless ((nodo.is_a? Bibliografias::Lista::Node) ||(nodo.is_a? Bibliografias::Bibliografia ))
 
+				if(nodo.is_a? Bibliografias::Bibliografia)then
+					nodo = Bibliografias::Lista::Node.new(nodo)
+		
+				end
 				if (@tail != nil) then
 					@tail.prev = nodo
 				end
@@ -150,39 +199,31 @@ module Bibliografias
 		def each
 		      aux = @head
 		      while aux != nil do
-			yield aux
+			yield aux.value
 			aux = aux.prev
 		      end
 		end
 		def mostrar
-			self.each{ |x| x.value.mostrar}
+			self.each{ |x| x.mostrar}
 		end
 		def to_s
 			cadena = ""
-			self.each{ |x| cadena << x.value.to_s << "\n"}
+			self.each{ |x| cadena << x.to_s << "\n"}
 			return cadena
 		end
+
 
 	end
 	class Libro < Bibliografias::Bibliografia
 		def initialize(texto)
 		   super(texto)
 		   raise ArgumentError,'Argumento "isbn" no debe ser nulo' unless texto[:isbn] != nil
-		  	raise ArgumentError,'Argumento "isbn" debe ser un Array' unless texto[:isbn].is_a? Array
-		  	texto[:isbn].each {|x| raise ArgumentError,'El valor del array debe ser String' unless x.is_a? String}
+		   raise ArgumentError,'Argumento "isbn" debe ser un Array' unless texto[:isbn].is_a? Array
+		   texto[:isbn].each {|x| raise ArgumentError,'El valor del array debe ser String' unless x.is_a? String}
 			@isbn = texto[:isbn]
 		   @isbn = texto[:isbn]
 		end
 		attr_reader :isbn
-	        def ==(obj)
-		      raise ArgumentError,'El agrumento pasado no debe ser nil' unless (!obj.nil?)
-		      raise ArgumentError, 'El argumento pasado debe ser del tipo Bibliografias::Libro' unless obj.is_a? Bibliografias::Libro
-		      super(obj)
-		       if (@isbn.eql? obj.isb) then
-					return true
-		       end
-		       return false
-		end
 		def mostrar
 		    super
 		    @isbn.each{ |x| print (" " << x << "\n")}
@@ -207,15 +248,6 @@ module Bibliografias
 	
 		end
 		attr_reader :issn,:enlace
-		def ==(obj)
-                      raise ArgumentError,'El agrumento pasado no debe ser nil' unless (!obj.nil?)
-		      raise ArgumentError, 'El argumento pasado debe ser del tipo Bibliografias::Publicacion' unless obj.is_a? Bibliografias::Publicacion
-			super(obj)
-		       if ((@issn.eql? obj.isb) && (@enlace.eql? obj.enlace)) then
-					return true
-		       end
-		       return false
-		end
 		def mostrar
 		    super 
 		    if(@enlace != nil)
@@ -231,7 +263,8 @@ module Bibliografias
 		   end
 		   @issn.each { |x| cadena << x}
 	           return cadena
-		end	
+		end
+				
 	end 
 
 

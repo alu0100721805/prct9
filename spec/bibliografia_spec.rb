@@ -23,7 +23,7 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 
 	   @libro1 = Bibliografias::Libro.new({:autor =>['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => 'July 7, 2013',:isbn =>['ISBN-13: 978-1937785499','ISBN-10: 1937785491']})
 	   @publicacion1 = Bibliografias::Publicacion.new({:autor =>['Juan Díaz'],:titulo => 'Artículo Práctico Herencia Ruby',:editorial => 'Pepito',:edicion => 'Digital',:fecha => 'Diciembre 20, 2015',:issn=> ['ISSN: 1234-1234'],:enlace =>nil})
-	   @l2 = Bibliografias::Lista.new(@b2)
+	 
 	   
 	  end
 	  
@@ -174,13 +174,16 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 			b2 = Bibliografias::Bibliografia.new({:autor =>['David Chelimsky','Dave Astels','Bryan Helmkamp','Dan North','Zach
 Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '1 edition',:fecha => 'December 25, 2010'})
 
+
 			expect(b1).to eql(b1)
 			expect(b1).to be >(b2)
-			
+			expect(b2).to be <(b1)
 
 		end
 
 	    end
+
+	 
 	  
  
 end
