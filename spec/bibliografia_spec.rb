@@ -180,7 +180,25 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 			expect(b2).to be <(b1)
 
 		end
+	    describe 'Expectativas Recorrer Lista de bibliografias' do
 
+		it 'Expectativa recorrer Lista' do
+
+		  @l2 = Bibliografias::Lista.new(@b2)
+	   	  @l2.push(@libro1)
+	   	  @l2.push(@publicacion1)
+		  expect(@l2.count).to eql(3)
+		  expect(@l2.max.to_s).to eql("Artículo Práctico Herencia RubyJuan DíazPepitoDigitalDiciembre 20, 2015ISSN: 1234-1234")
+		 expect(@l2.include?(@libro1)).to eql(true)
+
+		
+			
+		
+		end
+
+
+
+	  end
 	    end
 
 	 
