@@ -1,9 +1,9 @@
 
-# Práctica de Laboratorio #7. Programación Orientada a Objetos (TDD y POO) Juan José Gregorio Díaz Marrero CURSO 2015-2016
+# Práctica de Laboratorio #9. Programación Orientada a Objetos (TDD y POO) Juan José Gregorio Díaz Marrero CURSO 2015-2016
 
 # Gema  Bibliografía
 
- Esta gema permite crear objetos Libro::Bibliografia con el fin de guardar y mostrar la información relacionada a un libro (autor,titulo,serie,editorial,edición,fecha de publicación y números de ISBN). Además se implementa una lista de este tipo de objetos.
+ Esta gema permite crear objetos Libro::Bibliografia con el fin de guardar y mostrar la información relacionada a un libro (autor,titulo,serie,editorial,edición,fecha de publicación y números de ISBN) o una publicación (Enlace y números de ISSN). Además se implementa una lista de estos tipos de objetos.
 
 ## Installation
 
@@ -23,19 +23,7 @@ Or install it yourself as:
 
 ## Usage
 
- @b1 = Libro::Bibliografia.new({:autor =>['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => 'July 7, 2013',:isbn => ['ISBN-13: 978-1937785499','ISBN-10: 1937785491']})
-			
-  @b1.to_s
-
- nodo = Libro::Node.new(@b1,nil,nil)
- l1 = Libro::Lista.new(nodo)
- l1.push(nodo)-> Entra por la cabeza de la lista
- l1.unshift(nodo) -> Entra por la cola de la lista
- nodorec = l1.pop -> Extrae el elemento apuntado por la cabeza de la lista
- nodorec = l1.shift -> Extrae el elemento apuntado por la cola de la lista
- l1.each -> Mixing Enumerable
- l1.mostrar -> Muestra salida formateada de la lista sin retornar nada
- l1.to_s -> Convierte Toda la lista en una cadena , insertando por cada nodo un "\n" 
+Ejemplo de uso en el fichero "./spec/bibliografia_spec.rb"
 
 ## Development
 
