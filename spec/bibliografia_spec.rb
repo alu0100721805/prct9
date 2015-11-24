@@ -191,17 +191,10 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 		  expect(@l2.max.to_s).to eql("Artículo Práctico Herencia RubyJuan DíazPepitoDigitalDiciembre 20, 2015ISSN: 1234-1234")
 		 expect(@l2.include?(@libro1)).to eql(true)
 
-		
-			
-		
+
 		end
 
-
-
-	  end
 	    end
+	end
 
-	 
-	  
- 
 end
