@@ -165,6 +165,22 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 	  
 
 	   end
+
+	    describe 'Expectativas Comparar Objetos Tipos Bibliografia , Libro o Publicaciones' do
+
+		it 'Expectativa comparar Bibliografias 'do
+
+			b1 = Bibliografias::Bibliografia.new({:autor =>['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => 'July 7, 2013'}) 
+			b2 = Bibliografias::Bibliografia.new({:autor =>['David Chelimsky','Dave Astels','Bryan Helmkamp','Dan North','Zach
+Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '1 edition',:fecha => 'December 25, 2010'})
+
+			expect(b1).to eql(b1)
+			expect(b1).to be >(b2)
+			
+
+		end
+
+	    end
 	  
  
 end
