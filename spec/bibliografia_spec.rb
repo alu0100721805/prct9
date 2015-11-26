@@ -1,7 +1,5 @@
 require 'bibliografia/bibliografia.rb'
 require 'spec_helper'
-# encoding: utf-8
-
 describe Bibliografias do
 	  before(:each) do
 	    
