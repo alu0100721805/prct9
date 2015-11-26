@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'bibliografia/bibliografia.rb'
 require 'spec_helper'
 describe Bibliografias do
