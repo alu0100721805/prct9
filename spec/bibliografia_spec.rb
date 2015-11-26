@@ -1,5 +1,6 @@
 require 'bibliografia/bibliografia.rb'
 require 'spec_helper'
+# encoding: utf-8
 
 describe Bibliografias do
 	  before(:each) do
@@ -133,7 +134,8 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 		it 'Expectativa Atributos propios de una Clase Libro' do
 		   expect{@libro1 = Bibliografias::Libro.new({:autor => ['Dave Thomas', 'Andy Hunt', 'Chad Fowler'],:titulo => 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide',:serie => 'The Facets of Ruby',:editorial => 'Pragmatic Bookshelf',:edicion => '4 edition',:fecha => 'July 7, 2013',:isbn => nil})}.to raise_error(ArgumentError)
 		   expect(@libro1).to respond_to(:isbn)
-	           expect(@libro1.isbn).to contain_exactly('ISBN-13: 978-1937785499','ISBN-10: 1937785491')
+	           expect(@libro1.isbn[0]).to eql('ISBN-13: 978-1937785499')
+		   expect(@libro1.isbn[1]).to eql('ISBN-10: 1937785491')
 		end
 		it 'Expectativa metodos to_s y mostrar una clase Libro' do
 		   expect(@libro1).to respond_to(:mostrar)
@@ -154,7 +156,7 @@ Dennis', 'Aslak Hellesoy'],:titulo =>'The RSpec Book: Behaviour Driven Developme
 		   expect{@publicacion = Bibliografias::Publicacion.new({:autor =>['Juan Díaz'],:titulo => 'Artículo Práctico Herencia Ruby',:editorial => 'Pepito',:edicion => 'Digital',:fecha => 'Diciembre 20, 2015',:issn => nil,:enlace => nil})}.to raise_error(ArgumentError)
 		   expect(@publicacion1).to respond_to(:issn)
 		   expect(@publicacion1).to respond_to(:enlace)
-	           expect(@publicacion1.issn).to contain_exactly('ISSN: 1234-1234')
+	           expect(@publicacion1.issn[0]).to eql('ISSN: 1234-1234')
 		   expect(@publicacion1.enlace).to eql(nil)
 		end
 		it 'Expectativa metodos to_s y mostrar una clase Publicacion' do
